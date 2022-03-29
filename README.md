@@ -11,6 +11,7 @@ I will create a chat app, where it's possible :
 -Users will be able to share images.
 
 User Stories:
+
 -As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my
 friends and family.
 -As a user, I want to be able to send messages to my friends and family members to exchange
