@@ -30,10 +30,10 @@ export default class Chat extends React.Component {
                 },
                 {
                     _id: 2,
-                    text: '${name} has entered the chat',
+                    text: `${name} has entered the chat`,
                     createdAt: new Date(),
                     system: true,
-                },
+                }
             ],
         });
     }

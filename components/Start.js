@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
 
     box1: {
         backgroundColor: "white",
-        height: "46%",
+        height: 250,
         width: "88%",
         justifyContent: "space-around",
         alignItems: "center",
