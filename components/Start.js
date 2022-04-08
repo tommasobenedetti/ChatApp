@@ -8,6 +8,7 @@ import {
     Pressable,
     ImageBackground,
     TouchableOpacity,
+    KeyboardAvoidingView,
 } from "react-native";
 
 import BackgroundImage from "../assets/background-image.png";
@@ -38,7 +39,10 @@ export default class Start extends React.Component {
     render() {
         return (
             //Different components do differents things; View acts as a div from html
-            <View style={styles.container}>
+            <KeyboardAvoidingView
+                style={styles.container}
+                behavior="padding"
+                enabled>
                 <ImageBackground
                     source={BackgroundImage}
                     resizeMode="cover"
@@ -125,7 +129,7 @@ export default class Start extends React.Component {
                         </Pressable>
                     </View>
                 </ImageBackground>
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }
@@ -169,9 +173,10 @@ const styles = StyleSheet.create({
         borderColor: "grey",
         width: "88%",
         height: 60,
-        paddingLeft: 20,
+        paddingLeft: 0,
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "center",
     },
 
     image: {
@@ -189,7 +194,7 @@ const styles = StyleSheet.create({
 
     colorBox: {
         marginRight: "auto",
-        paddingLeft: 15,
+        paddingLeft: 60,
         width: "88%",
     },
 
