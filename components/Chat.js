@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Platform, KeyboardAvoidingView, StyleSheet } from "react-native";
 import { GiftedChat, Bubble } from 'react-native-gifted-chat'
-import * as firebase from "firebase";
+import * as firebase from "firebase/app";
 import "firebase/firestore";
 
 const firebaseConfig = {
