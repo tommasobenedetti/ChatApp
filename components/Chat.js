@@ -156,14 +156,14 @@ export default class Chat extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
+        justifyContent: 'center',
+        paddingTop: 40,
     },
-    giftedChat: {
-        flex: 1,
-        width: "75%",
-        paddingBottom: 10,
-        justifyContent: "center",
-        borderRadius: 5,
+    item: {
+        fontSize: 20,
+        color: 'blue',
     },
+    text: {
+        fontSize: 30,
+    }
 });
