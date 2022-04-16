@@ -38,7 +38,7 @@ export default class Chat extends React.Component {
             firebase.initializeApp(firebaseConfig);
         }
 
-        // reference to the Firestore messages collection
+        // reference to the Firestore "messages" collection
 
         this.referenceChatMessages = firebase.firestore().collection("messages");
     }
@@ -63,6 +63,7 @@ export default class Chat extends React.Component {
         this.setState({
             messages: messages,
         });
+        this.saveMessages();
     };
 
     // get messages from AsyncStorage
@@ -103,8 +104,6 @@ export default class Chat extends React.Component {
         }
     }
 
-
-
     // Using component did mount to create the initial chat message and adding a bot image!
     componentDidMount() {
         // Set the page title once Chat is loaded
@@ -128,7 +127,6 @@ export default class Chat extends React.Component {
                     //update user state with currently active user data
                     this.setState({
                         uid: user.uid,
-                        messages: [],
                         user: {
                             _id: user.uid,
                             name: name,
@@ -142,7 +140,6 @@ export default class Chat extends React.Component {
                         .collection("messages")
                         .where("uid", "==", this.state.uid);
                 });
-
                 // save messages locally to AsyncStorage
                 this.saveMessages();
             } else {
@@ -166,7 +163,7 @@ export default class Chat extends React.Component {
         });
     }
 
-    // Make sure messages are sent
+    //attaches messages to chat
     onSend(messages = []) {
         this.setState(
             previousState => ({
@@ -175,8 +172,7 @@ export default class Chat extends React.Component {
             () => {
                 this.saveMessages();
                 this.addMessages();
-            }
-        );
+            });
     }
 
 
