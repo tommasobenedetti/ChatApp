@@ -140,8 +140,6 @@ export default class Chat extends React.Component {
                         .collection("messages")
                         .where("uid", "==", this.state.uid);
                 });
-                // save messages locally to AsyncStorage
-                this.saveMessages();
             } else {
                 // when the user is offline!
                 this.setState({ isConnected: false });
