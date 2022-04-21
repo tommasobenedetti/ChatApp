@@ -6,6 +6,9 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore"; import "firebase/firestore";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
+import MapView from 'react-native-maps';
+import CustomActions from './CustomActions';
+
 
 
 //configuring firebase keys
@@ -29,6 +32,8 @@ export default class Chat extends React.Component {
                 name: "",
                 avatar: "",
             },
+            image: null,
+            location: null
         };
 
 
@@ -58,6 +63,8 @@ export default class Chat extends React.Component {
                     name: data.user.name,
                     avatar: data.user.avatar,
                 },
+                image: data.image || null,
+                location: data.location || null,
             });
         });
         this.setState({
@@ -157,8 +164,34 @@ export default class Chat extends React.Component {
             _id: message._id,
             text: message.text || '',
             createdAt: message.createdAt,
-            user: this.state.user
+            user: this.state.user,
+            image: message.image || "",
+            location: message.location || null
         });
+    }
+
+    // Returns a mapview when user adds a location to current message
+    renderCustomView(props) {
+        const { currentMessage } = props;
+        if (currentMessage.location) {
+            return (
+                <MapView
+                    style={{ width: 150, height: 100, borderRadius: 13, margin: 3 }}
+                    region={{
+                        latitude: currentMessage.location.latitude,
+                        longitude: currentMessage.location.longitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                />
+            );
+        }
+        return null;
+    }
+
+    // action button to access custom features
+    renderCustomActions(props) {
+        return <CustomActions {...props} />;
     }
 
     //attaches messages to chat
@@ -186,6 +219,7 @@ export default class Chat extends React.Component {
         );
     }
 
+    //customizes input toolbar if online
     renderInputToolbar(props) {
         if (this.state.isConnected == false) {
         } else {
@@ -215,6 +249,8 @@ export default class Chat extends React.Component {
                 <GiftedChat
                     renderBubble={this.renderBubble.bind(this)}
                     renderInputToolbar={this.renderInputToolbar.bind(this)}
+                    renderActions={this.renderCustomActions}
+                    renderCustomView={this.renderCustomView}
                     messages={this.state.messages}
                     onSend={messages => this.onSend(messages)}
                     user={{
