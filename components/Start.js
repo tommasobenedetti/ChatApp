@@ -41,7 +41,7 @@ export default class Start extends React.Component {
             //Different components do differents things; View acts as a div from html
             <KeyboardAvoidingView
                 style={styles.container}
-                behavior="padding"
+                behavior="height"
                 enabled>
                 <ImageBackground
                     source={BackgroundImage}
