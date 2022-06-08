@@ -4,10 +4,6 @@
 'npm install expo-cli --global'
 Download 'Expo App' for your phone.
 
-# How to run the app
-To launch the app run 'expo start' or 'npm start'.
-Your browser will open up a new tab. You'll see options for running the app directly on your phone or on your computer browser.
-
 # Key Features
 - A page where users can enter their name and choose a background color for the chat screen
 before joining the chat.
@@ -30,3 +26,9 @@ and location data.
 - Location data must be sent via the chat in a map view.
 - The chat interface and functionality must be created using the Gifted Chat library.
 - The app’s codebase must contain comments.
+
+# Run the App
+
+To launch the local server, run expo start or npm start in your terminal. <br>
+Expo will start the app and development tools will be available in a browser window. Scan the QR code provided in the terminal with the Expo Go app to launch the project on your physical device. <br>
+Alternatively, you can open the project on an emulator/simulator (with Android Studio / Xcode) using the development tools in the browser.
